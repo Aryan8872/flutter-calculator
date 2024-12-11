@@ -11,6 +11,7 @@ class _CalculatorViewState extends State<CalculatorView> {
   int firstNumber = 0;
   int secondNumber = 0;
   String operation = "";
+  String history = ""; 
 
   final _textController = TextEditingController();
   List<String> lstSymbols = [
@@ -66,6 +67,7 @@ class _CalculatorViewState extends State<CalculatorView> {
           key: _key,
           child: Column(
             children: [
+              Text(history,style: TextStyle(fontSize: 18,color: Colors.black45),),
               TextFormField(
                 textDirection: TextDirection.rtl,
                 controller: _textController,
@@ -127,12 +129,15 @@ class _CalculatorViewState extends State<CalculatorView> {
                           setState(() {
                             firstNumber = int.parse(_textController.text);
                             operation = "+";
+                            history = "$firstNumber $operation";
                           });
                           _textController.text = "";
                             case "-":
                           setState(() {
                             firstNumber = int.parse(_textController.text);
                             operation = "-";
+                           history = "$firstNumber $operation";
+
                           });
                           _textController.text = "";
 
@@ -140,6 +145,8 @@ class _CalculatorViewState extends State<CalculatorView> {
                           setState(() {
                             firstNumber = int.parse(_textController.text);
                              operation = "%";
+                            history = "$firstNumber $operation";
+
                           });
                           _textController.text = "";
 
@@ -152,6 +159,8 @@ class _CalculatorViewState extends State<CalculatorView> {
                           setState(() {
                             firstNumber = int.parse(_textController.text);
                              operation = "/";
+                              history = "$firstNumber $operation";
+
                           });
                           _textController.text = "";
 
@@ -160,11 +169,18 @@ class _CalculatorViewState extends State<CalculatorView> {
                           setState(() {
                             firstNumber = int.parse(_textController.text);
                             operation = "*";
+                             history = "$firstNumber $operation";
+
                           });
                           _textController.text = "";
 
                           case "=":
                           secondNumber = int.parse(_textController.text);
+                          setState(() {
+                            history = "$firstNumber $operation $secondNumber = ";
+
+                          });
+
 
                           switch(operation){
 
@@ -187,6 +203,7 @@ class _CalculatorViewState extends State<CalculatorView> {
 
                           case "C":
                           _textController.text = "";
+               
                         }
                    
                        
