@@ -67,7 +67,7 @@ class _CalculatorViewState extends State<CalculatorView> {
           key: _key,
           child: Column(
             children: [
-              Text(history,style: TextStyle(fontSize: 18,color: Colors.black45),),
+              Text(history,style: TextStyle(fontSize: 19,color: Colors.black45),),
               TextFormField(
                 textDirection: TextDirection.rtl,
                 controller: _textController,
